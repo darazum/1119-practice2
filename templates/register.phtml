@@ -1,0 +1,46 @@
+<?php include 'header.phtml'; ?>
+
+<style>.error {color: red}</style>
+
+<h3>Регистрация</h3>
+<form action="/register" method="post">
+    <table>
+        <tr>
+            <td>Введите имя:</td>
+            <td><input type="text" name="name" value="<?=$_POST['name'] ?? '';?>"></td>
+            <td class="error"><?if(!empty($errors['name'])):?><?=$errors['name'];?><?endif;?></td>
+        </tr>
+        <tr>
+            <td>Введите пароль:</td>
+            <td><input type="text" name="password"></td>
+            <td class="error"><?if(!empty($errors['password'])):?><?=$errors['password'];?><?endif;?></td>
+        </tr>
+        <tr>
+            <td>Введите email:</td>
+            <td><input type="text" name="email" value="<?=$_POST['email'] ?? '';?>"></td>
+            <td class="error"><?if(!empty($errors['email'])):?><?=$errors['email'];?><?endif;?></td>
+        </tr>
+    </table>
+    <input type="hidden" name="command" value="register">
+    <input type="submit" value="зарегистрироваться">
+</form>
+
+<h3>Вход</h3>
+<form action="/register" method="post">
+    <table>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" name="email" value="<?=$_POST['email'] ?? '';?>"></td>
+        </tr>
+        <tr>
+            <td>Пароль:</td>
+            <td><input type="text" name="password"></td>
+        </tr>
+    </table>
+    <? if(!empty($errors['login'])):?>
+        <span class="error"><?=$errors['login'];?></span><br>
+    <? endif; ?>
+    <input type="hidden" name="command" value="login">
+    <input type="submit" value="Войти">
+</form>
+<?php include 'footer.phtml'; ?>
